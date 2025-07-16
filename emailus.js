@@ -950,7 +950,7 @@ form.addEventListener('submit', async (e) => {
     
     try {
         // Replace with your actual form submission endpoint
-        const response = await fetch('/api/feedback', {
+        const response = await fetch('https://api-selina.d.yeducoders.com/submitfeedback', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
