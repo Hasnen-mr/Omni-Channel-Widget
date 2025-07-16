@@ -505,6 +505,15 @@ feedbackStyle.textContent = `
         -3px 0 15px rgba(0, 0, 0, 0.15);
 }
 
+.feedback-tab svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+    fill: currentColor;
+}
+
+
 .feedback-form-container {
     position: fixed;
     right: 15px;
@@ -810,6 +819,13 @@ feedbackContainer.className = 'feedback-widget-container';
 const feedbackTab = document.createElement('button');
 feedbackTab.className = 'feedback-tab';
 feedbackTab.textContent = 'Feedback Us';
+feedbackTab.innerHTML = `
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v1.2l-10 6.25L2 5.2V4zm0 3.48l9.56 5.98a1 1 0 001.1 0L22 7.48V20a2 2 0 01-2 2H4a2 2 0 01-2-2V7.48z"/>
+  </svg>
+  Feedback Us
+`;
+
 feedbackTab.setAttribute('aria-label', 'Open feedback form');
 
 // Form container
