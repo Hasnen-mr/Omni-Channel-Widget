@@ -397,22 +397,18 @@ style.textContent = `
 
   .message-1 {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      animation: pulse 2s ease-in-out infinite 2s;
   }
 
   .message-2 {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      animation: pulse 2s ease-in-out infinite 2s;
   }
 
   .message-3 {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      animation: pulse 2s ease-in-out infinite 2s;
   }
 
   .message-4 {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      animation: pulse 2s ease-in-out infinite 2s;
   }
 
   .auto-open-notification::before {
