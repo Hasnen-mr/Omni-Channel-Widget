@@ -163,7 +163,7 @@ style.textContent = `
   .widget-container {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      right: 45px;
       z-index: 1000;
       display: flex;
       flex-direction: column;
