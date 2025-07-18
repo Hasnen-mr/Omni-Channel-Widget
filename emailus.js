@@ -966,7 +966,7 @@ form.addEventListener('submit', async (e) => {
     
     try {
         // Replace with your actual form submission endpoint
-        const response = await fetch('https://api.rentabout.com//submitfeedback', {
+        const response = await fetch('https://api.rentabout.com/submitfeedback', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
