@@ -427,8 +427,8 @@ zantaSecureTrustStyle.textContent = `
   position: fixed;
   bottom: 36px;
   left: 25px; /* or left: 25px if needed */
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   background-color: #6aaae4; /* Flat blue */
   border-radius: 8px;
   display: flex;
@@ -446,8 +446,8 @@ zantaSecureTrustStyle.textContent = `
 }
 
 .zanta-secure-trust-shield-icon {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
