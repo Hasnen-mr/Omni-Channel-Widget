@@ -57,67 +57,12 @@ zantaSecureTrustStyle.textContent = `
           transform: translateY(0);
       }
   }
-
   .zanta-secure-trust-widget-container {
       position: fixed;
       left: 20px;
       bottom: 20px;
       z-index: 9998;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  }
-
-  .zanta-secure-trust-badge {
-      position: relative;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      padding: 12px 16px;
-      border-radius: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 
-          0 8px 32px rgba(102, 126, 234, 0.3),
-          0 4px 16px rgba(118, 75, 162, 0.2);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      animation: 
-          zanta-secure-trust-float 4s ease-in-out infinite,
-          zanta-secure-trust-pulse 2s ease-in-out infinite 2s;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      font-weight: 600;
-      font-size: 14px;
-      gap: 8px;
-  }
-
-  .zanta-secure-trust-badge::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.4),
-          transparent
-      );
-      animation: zanta-secure-trust-shine-interval 10s ease-in-out infinite;
-      pointer-events: none;
-  }
-
-  .zanta-secure-trust-badge:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 
-          0 12px 40px rgba(102, 126, 234, 0.4),
-          0 6px 20px rgba(118, 75, 162, 0.3);
-      animation-play-state: paused;
-  }
-
-  .zanta-secure-trust-badge:hover::before {
-      animation: zanta-secure-trust-shine 1s ease-out;
   }
 
   .zanta-secure-trust-shield-icon {
@@ -361,6 +306,156 @@ zantaSecureTrustStyle.textContent = `
           transition-duration: 0.1s !important;
       }
   }
+
+
+
+
+/* Gradient Trust Shield Badge */
+.trust-badge-gradient {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); /* Trust green gradient */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 20px rgba(76, 175, 80, 0.3),
+    0 6px 10px rgba(46, 125, 50, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.trust-badge-gradient:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 
+    0 8px 30px rgba(76, 175, 80, 0.4),
+    0 10px 15px rgba(46, 125, 50, 0.3);
+  animation: none;
+}
+
+.trust-badge-gradient::after {
+  content: "🛡️";
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+/* Trust pulse animation */
+@keyframes trust-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+.trust-badge-gradient.pulse {
+  animation: trust-pulse 2s infinite;
+}
+
+/* Blue Trust Badge */
+.trust-badge-blue {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #2196F3; /* Trust blue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 
+    0 2px 10px rgba(33, 150, 243, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.trust-badge-blue::before {
+  content: "🛡️";
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+.trust-badge-blue::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+}
+
+.trust-badge-blue:hover {
+  transform: translateY(-5px) rotate(5deg);
+  box-shadow: 
+    0 6px 20px rgba(33, 150, 243, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.trust-badge-blue:hover::after {
+  left: 100%;
+}
+
+/* Trust colors used:
+   - Green gradient (#4CAF50 to #2E7D32) for Design 1
+   - Solid blue (#2196F3) for Design 2
+   Both colors are commonly associated with trust and security
+*/
+
+
+.zanta-secure-trust-badge {
+  position: fixed;
+  bottom: 36px;
+  left: 25px; /* or left: 25px if needed */
+  width: 50px;
+  height: 50px;
+  background-color: #6aaae4; /* Flat blue */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.zanta-secure-trust-badge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.zanta-secure-trust-shield-icon {
+  width: 35px;
+  height: 35px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 29 36'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M14.588 0l.445.328c1.807 1.303 3.961 2.533 6.461 3.688 2.015.93 4.576 1.746 7.682 2.446 0 14.178-4.73 24.133-14.19 29.864l-.398.236C4.863 30.87 0 20.837 0 6.462c3.107-.7 5.668-1.516 7.682-2.446 2.709-1.251 5.01-2.59 6.906-4.016zm5.87 13.88a.75.75 0 00-.974.159l-5.475 6.625-3.005-2.997-.077-.067a.75.75 0 00-.983 1.13l4.172 4.16 6.525-7.895.06-.083a.75.75 0 00-.16-.973z'/%3E%3C/svg%3E");
+}
+
+
+  
 `;
 document.head.appendChild(zantaSecureTrustStyle);
 
@@ -372,8 +467,7 @@ zantaSecureTrustContainer.className = 'zanta-secure-trust-widget-container';
 const zantaSecureTrustBadge = document.createElement('div');
 zantaSecureTrustBadge.className = 'zanta-secure-trust-badge';
 zantaSecureTrustBadge.innerHTML = `
-    <span class="zanta-secure-trust-shield-icon">🛡️</span>
-    <span>Trust & Safety</span>
+    <span class="zanta-secure-trust-shield-icon"></span>
 `;
 
 // Content container
