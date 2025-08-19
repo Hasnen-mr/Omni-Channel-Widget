@@ -1,4 +1,4 @@
-// Update at 19 Aug 5:42 PM 
+// Update at 19 Aug 6:00 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -264,7 +264,8 @@ style.textContent = `
       display: none;
       flex-direction: column;
       align-items: flex-end;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      margin-right: 10px;
       gap: 12px;
   }
 
@@ -273,8 +274,8 @@ style.textContent = `
   }
 
   .channel-button {
-      width: 56px;
-      height: 56px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       border: none;
       cursor: pointer;
@@ -341,8 +342,8 @@ style.textContent = `
   }
 
   .channel-button svg {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       display: block;
       z-index: 1;
       transition: transform 0.3s ease;
