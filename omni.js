@@ -1,4 +1,4 @@
-// Updated on 19 Aug 2025 11:19
+// Update at 19 Aug 4:11 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -15,7 +15,8 @@ var TelegramSVG = '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width
 var linkedInSVG = '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"><path fill="#0288D1" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"></path><path fill="#FFF" d="M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"></path></svg>'
 
 var twitterSVG = '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"><path fill="#03A9F4" d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"></path></svg>'
-var chatbotSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 48 48"><g><circle cx="24" cy="24" r="20" fill="#4f8cff"/><ellipse cx="24" cy="28" rx="12" ry="7" fill="#fff" opacity="0.9"/><ellipse cx="24" cy="20" rx="10" ry="8" fill="#fff"/><circle cx="19" cy="20" r="2" fill="#4f8cff"/><circle cx="29" cy="20" r="2" fill="#4f8cff"/><rect x="20" y="25" width="8" height="2" rx="1" fill="#4f8cff" opacity="0.7"/><path d="M24 44c-2.5-2-4-4.5-4-7h8c0 2.5-1.5 5-4 7z" fill="#fff" opacity="0.7"/></g></svg>';
+var chatbotSVG = '<?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 115.98 122.88" style="enable-background:new 0 0 115.98 122.88" xml:space="preserve"><g><path d="M17.2,0h59.47c4.73,0,9.03,1.93,12.15,5.05c3.12,3.12,5.05,7.42,5.05,12.15v38.36c0,4.73-1.93,9.03-5.05,12.15 c-3.12,3.12-7.42,5.05-12.15,5.05H46.93L20.81,95.21c-1.21,1.04-3.04,0.9-4.08-0.32c-0.51-0.6-0.74-1.34-0.69-2.07l1.39-20.07H17.2 c-4.73,0-9.03-1.93-12.15-5.05C1.93,64.59,0,60.29,0,55.56V17.2c0-4.73,1.93-9.03,5.05-12.15C8.16,1.93,12.46,0,17.2,0L17.2,0z M102.31,27.98c3.37,0.65,6.39,2.31,8.73,4.65c3.05,3.05,4.95,7.26,4.95,11.9v38.36c0,4.64-1.89,8.85-4.95,11.9 c-3.05,3.05-7.26,4.95-11.9,4.95h-0.61l1.42,20.44l0,0c0.04,0.64-0.15,1.3-0.6,1.82c-0.91,1.07-2.52,1.19-3.58,0.28l-26.22-23.2 H35.01l17.01-17.3h36.04c7.86,0,14.3-6.43,14.3-14.3V29.11C102.35,28.73,102.34,28.35,102.31,27.98L102.31,27.98z M25.68,43.68 c-1.6,0-2.9-1.3-2.9-2.9c0-1.6,1.3-2.9,2.9-2.9h30.35c1.6,0,2.9,1.3,2.9,2.9c0,1.6-1.3,2.9-2.9,2.9H25.68L25.68,43.68z M25.68,29.32c-1.6,0-2.9-1.3-2.9-2.9c0-1.6,1.3-2.9,2.9-2.9H68.7c1.6,0,2.9,1.3,2.9,2.9c0,1.6-1.3,2.9-2.9,2.9H25.68L25.68,29.32z M76.66,5.8H17.2c-3.13,0-5.98,1.28-8.05,3.35C7.08,11.22,5.8,14.06,5.8,17.2v38.36c0,3.13,1.28,5.98,3.35,8.05 c2.07,2.07,4.92,3.35,8.05,3.35h3.34v0.01l0.19,0.01c1.59,0.11,2.8,1.49,2.69,3.08l-1.13,16.26L43.83,67.8 c0.52-0.52,1.24-0.84,2.04-0.84h30.79c3.13,0,5.98-1.28,8.05-3.35c2.07-2.07,3.35-4.92,3.35-8.05V17.2c0-3.13-1.28-5.98-3.35-8.05 C82.65,7.08,79.8,5.8,76.66,5.8L76.66,5.8z"/></g></svg>'
+// '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 48 48"><g><circle cx="24" cy="24" r="20" fill="#4f8cff"/><ellipse cx="24" cy="28" rx="12" ry="7" fill="#fff" opacity="0.9"/><ellipse cx="24" cy="20" rx="10" ry="8" fill="#fff"/><circle cx="19" cy="20" r="2" fill="#4f8cff"/><circle cx="29" cy="20" r="2" fill="#4f8cff"/><rect x="20" y="25" width="8" height="2" rx="1" fill="#4f8cff" opacity="0.7"/><path d="M24 44c-2.5-2-4-4.5-4-7h8c0 2.5-1.5 5-4 7z" fill="#fff" opacity="0.7"/></g></svg>';
 
 // Function to get URL parameters
 function getUrlParams() {
@@ -694,47 +695,61 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const chatIframe = document.querySelector('iframe[src*="respond.io/webchat/widget/chat.html"]');
+  console.log("DOMContentLoaded");
+
+  const chatIframe = document.querySelector('iframe[src*="respond.io/webchat/widget/chat.html"]');
+    console.log("chatIframe", chatIframe);
     if (chatIframe) {
-        chatIframe.style.display = "none";  // hide it initially
+      chatIframe.style.display = "none";  // hide it initially
+    }
+
+  setTimeout(() => {
+    console.log("DOMContentLoaded 2");
+
+
+    const chatIframe = document.querySelector('iframe[src*="respond.io/webchat/widget/chat.html"]');
+    console.log("chatIframe", chatIframe);
+    if (chatIframe) {
+      chatIframe.style.display = "none";  // hide it initially
     }
 
 
+    const contactBtn = document.querySelector('.base-main-button.contact-us-btn.d-flex');
+    console.log("contactBtn", contactBtn);
+    // similar to chatbutton click event
+    contactBtn.addEventListener("click", function () {
+      console.log("contactBtn clicked");
+      if ($respond.is("chat:open")) {
+        $respond.do("chat:close");
+      } else {
+        $respond.do("chat:open");
+        chatIframe.style.display = "block";
+        chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
 
-  const contactBtn = document.querySelector('.base-main-button.contact-us-btn.d-flex');
-  console.log("contactBtn", contactBtn);
-  // similar to chatbutton click event
-  contactBtn.addEventListener("click", function() {
-    if ($respond.is("chat:open")) {
-      $respond.do("chat:close");
-    } else {
-      $respond.do("chat:open");
-      chatIframe.style.display = "block";  
-      chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  });
+    const chatBtn = document.getElementById("chatbot");
+    chatBtn.addEventListener("click", function () {
+      console.log("chatBtn clicked");
+      if ($respond.is("chat:open")) {
+        $respond.do("chat:close");
+      } else {
+        $respond.do("chat:open");
+        chatIframe.style.display = "block";
+        chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
 
-  const chatBtn = document.getElementById("chatbot");
-  chatBtn.addEventListener("click", function() {
-    if ($respond.is("chat:open")) {
-      $respond.do("chat:close");
-    } else {
-      $respond.do("chat:open");
-      chatIframe.style.display = "block";  
-      chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  });
+    $respond.on("chat:opened", () => {
+      console.log("Chat opened (via event listener)");
+    });
 
-  $respond.on("chat:opened", () => {
-    console.log("Chat opened (via event listener)");
-  });
+    $respond.on("chat:closed", () => {
+      console.log("Chat closed (via event listener)");
+      chatIframe.style.display = "none";
 
-  $respond.on("chat:closed", () => {
-    console.log("Chat closed (via event listener)");
-    chatIframe.style.display = "none";  
-
-  });
-
+    });
+  }, 3000);
 });
 
 
