@@ -1,4 +1,4 @@
-// Update at 19 Aug 6:00 PM 
+// Update at 19 Aug 4:18 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -693,11 +693,85 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-window.addEventListener("load", () => {
-  console.log("Page fully loaded");
+(function () {
+  let lastUrl = location.href;
 
-  // Helper: safely query element
-  const waitForElement = (selector, callback, checkInterval = 500, maxTries = 20) => {
+  // Observer for URL changes (works in SPAs)
+  new MutationObserver(() => {
+    const url = location.href;
+    if (url !== lastUrl) {
+      lastUrl = url;
+      console.log("URL changed:", url);
+      initRespondChat(); // re-run setup
+    }
+  }).observe(document, { subtree: true, childList: true });
+
+  // Main setup function
+  function initRespondChat() {
+    console.log("Init Respond.io chat");
+
+    // Clean up any old bindings to avoid duplicates
+    const oldBtns = document.querySelectorAll(".chat-init-bound");
+    oldBtns.forEach(btn => {
+      btn.replaceWith(btn.cloneNode(true)); // remove old handlers
+    });
+
+    // Wait for chat iframe
+    waitForElement('iframe[src*="respond.io/webchat/widget/chat.html"]', (chatIframe) => {
+      console.log("chatIframe ready");
+      chatIframe.style.display = "none";
+
+      // Contact button handler
+      const contactBtn = document.querySelector('.base-main-button.contact-us-btn.d-flex');
+      if (contactBtn && !contactBtn.classList.contains("chat-init-bound")) {
+        contactBtn.classList.add("chat-init-bound");
+        contactBtn.addEventListener("click", () => {
+          console.log("contactBtn clicked");
+          if ($respond.is("chat:open")) {
+            $respond.do("chat:close");
+          } else {
+            $respond.do("chat:open");
+            chatIframe.style.display = "block";
+            chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        });
+      }
+
+      // Chatbot button handler
+      const chatBtn = document.getElementById("chatbot");
+      if (chatBtn && !chatBtn.classList.contains("chat-init-bound")) {
+        chatBtn.classList.add("chat-init-bound");
+        chatBtn.addEventListener("click", () => {
+          console.log("chatBtn clicked");
+          if ($respond.is("chat:open")) {
+            $respond.do("chat:close");
+            chatIframe.style.display = "none";
+          } else {
+            $respond.do("chat:open");
+            chatIframe.style.display = "block";
+            chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        });
+      }
+
+      // Respond.io event listeners (safe to re-bind once only)
+      if (!window.respondEventsBound) {
+        $respond.on("chat:opened", () => {
+          console.log("Chat opened");
+        });
+
+        $respond.on("chat:closed", () => {
+          console.log("Chat closed");
+          chatIframe.style.display = "none";
+        });
+
+        window.respondEventsBound = true;
+      }
+    });
+  }
+
+  // Helper: wait for element
+  function waitForElement(selector, callback, checkInterval = 500, maxTries = 20) {
     let tries = 0;
     const interval = setInterval(() => {
       const el = document.querySelector(selector);
@@ -709,60 +783,12 @@ window.addEventListener("load", () => {
         console.warn(`Element not found: ${selector}`);
       }
     }, checkInterval);
-  };
+  }
 
-  // Wait for chat iframe
-  waitForElement('iframe[src*="respond.io/webchat/widget/chat.html"]', (chatIframe) => {
-    console.log("chatIframe ready");
-    chatIframe.style.display = "none";
+  // First run on page load
+  window.addEventListener("load", initRespondChat);
+})();
 
-    // Contact button handler
-    const contactBtn = document.querySelector('.base-main-button.contact-us-btn.d-flex');
-    if (contactBtn) {
-      contactBtn.addEventListener("click", () => {
-        console.log("contactBtn clicked");
-        if ($respond.is("chat:open")) {
-          $respond.do("chat:close");
-        } else {
-          $respond.do("chat:open");
-          chatIframe.style.display = "block";
-          chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-          setTimeout(() => {
-          $respond.do("chat:open");
-          chatIframe.style.display = "block";
-          chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-          }, 1000);
-        }
-      });
-    }
-
-    // Chatbot button handler
-    const chatBtn = document.getElementById("chatbot");
-    if (chatBtn) {
-      chatBtn.addEventListener("click", () => {
-        console.log("chatBtn clicked");
-        if ($respond.is("chat:open")) {
-          $respond.do("chat:close");
-          chatIframe.style.display = "none";
-        } else {
-          $respond.do("chat:open");
-          chatIframe.style.display = "block";
-          chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      });
-    }
-
-    // Respond.io event listeners
-    $respond.on("chat:opened", () => {
-      console.log("Chat opened");
-    });
-
-    $respond.on("chat:closed", () => {
-      console.log("Chat closed");
-      chatIframe.style.display = "none";
-    });
-  });
-});
 
 
 
