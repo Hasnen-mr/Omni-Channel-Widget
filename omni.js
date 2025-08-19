@@ -1,4 +1,4 @@
-// Update at 19 Aug 4:59 PM 
+// Update at 19 Aug 5:42 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -692,63 +692,77 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-  window.addEventListener("load", () => {
-    console.log("DOMContentLoaded");
+window.addEventListener("load", () => {
+  console.log("Page fully loaded");
 
-  const chatIframe = document.querySelector('iframe[src*="respond.io/webchat/widget/chat.html"]');
-    console.log("chatIframe", chatIframe);
-    if (chatIframe) {
-      chatIframe.style.display = "none";  // hide it initially
-    }
+  // Helper: safely query element
+  const waitForElement = (selector, callback, checkInterval = 500, maxTries = 20) => {
+    let tries = 0;
+    const interval = setInterval(() => {
+      const el = document.querySelector(selector);
+      if (el) {
+        clearInterval(interval);
+        callback(el);
+      } else if (++tries >= maxTries) {
+        clearInterval(interval);
+        console.warn(`Element not found: ${selector}`);
+      }
+    }, checkInterval);
+  };
 
-  setTimeout(() => {
-    console.log("DOMContentLoaded 2");
+  // Wait for chat iframe
+  waitForElement('iframe[src*="respond.io/webchat/widget/chat.html"]', (chatIframe) => {
+    console.log("chatIframe ready");
+    chatIframe.style.display = "none";
 
-
-    const chatIframe = document.querySelector('iframe[src*="respond.io/webchat/widget/chat.html"]');
-    console.log("chatIframe", chatIframe);
-    if (chatIframe) {
-      chatIframe.style.display = "none";  // hide it initially
-    }
-
-
+    // Contact button handler
     const contactBtn = document.querySelector('.base-main-button.contact-us-btn.d-flex');
-    console.log("contactBtn", contactBtn);
-    // similar to chatbutton click event
-    contactBtn.addEventListener("click", function () {
-      console.log("contactBtn clicked");
-      if ($respond.is("chat:open")) {
-        $respond.do("chat:close");
-      } else {
-        $respond.do("chat:open");
-        chatIframe.style.display = "block";
-        chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    });
+    if (contactBtn) {
+      contactBtn.addEventListener("click", () => {
+        console.log("contactBtn clicked");
+        if ($respond.is("chat:open")) {
+          $respond.do("chat:close");
+        } else {
+          $respond.do("chat:open");
+          chatIframe.style.display = "block";
+          chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+          setTimeout(() => {
+          $respond.do("chat:open");
+          chatIframe.style.display = "block";
+          chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 1000);
+        }
+      });
+    }
 
+    // Chatbot button handler
     const chatBtn = document.getElementById("chatbot");
-    chatBtn.addEventListener("click", function () {
-      console.log("chatBtn clicked");
-      if ($respond.is("chat:open")) {
-        $respond.do("chat:close");
-      } else {
-        $respond.do("chat:open");
-        chatIframe.style.display = "block";
-        chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    });
+    if (chatBtn) {
+      chatBtn.addEventListener("click", () => {
+        console.log("chatBtn clicked");
+        if ($respond.is("chat:open")) {
+          $respond.do("chat:close");
+          chatIframe.style.display = "none";
+        } else {
+          $respond.do("chat:open");
+          chatIframe.style.display = "block";
+          chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    }
 
+    // Respond.io event listeners
     $respond.on("chat:opened", () => {
-      console.log("Chat opened (via event listener)");
+      console.log("Chat opened");
     });
 
     $respond.on("chat:closed", () => {
-      console.log("Chat closed (via event listener)");
+      console.log("Chat closed");
       chatIframe.style.display = "none";
-
     });
-  }, 3000);
+  });
 });
+
 
 
 
