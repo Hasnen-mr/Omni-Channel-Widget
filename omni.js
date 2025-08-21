@@ -1,4 +1,4 @@
-// Update at 20 Aug 11:48 AM 
+// Update at 19 Aug 6:00 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -716,6 +716,8 @@ window.addEventListener("load", () => {
     console.log("chatIframe ready");
     chatIframe.style.display = "none";
 
+    let openInterval = null;
+
     // Contact button handler
     const contactBtn = document.querySelector('.base-main-button.contact-us-btn.d-flex');
     if (contactBtn) {
@@ -723,15 +725,20 @@ window.addEventListener("load", () => {
         console.log("contactBtn clicked");
         if ($respond.is("chat:open")) {
           $respond.do("chat:close");
+          clearInterval(openInterval);
+          openInterval = null;
         } else {
           $respond.do("chat:open");
           chatIframe.style.display = "block";
           chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-          setTimeout(() => {
-          $respond.do("chat:open");
-          chatIframe.style.display = "block";
-          chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
-          }, 1000);
+
+          // Retry every 100ms until chat:opened
+          if (!openInterval) {
+            openInterval = setInterval(() => {
+              console.log("Retrying chat open…");
+              $respond.do("chat:open");
+            }, 100);
+          }
         }
       });
     }
@@ -744,10 +751,20 @@ window.addEventListener("load", () => {
         if ($respond.is("chat:open")) {
           $respond.do("chat:close");
           chatIframe.style.display = "none";
+          clearInterval(openInterval);
+          openInterval = null;
         } else {
           $respond.do("chat:open");
           chatIframe.style.display = "block";
           chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+
+          // Retry every 100ms until chat:opened
+          if (!openInterval) {
+            openInterval = setInterval(() => {
+              console.log("Retrying chat open…");
+              $respond.do("chat:open");
+            }, 100);
+          }
         }
       });
     }
@@ -755,13 +772,18 @@ window.addEventListener("load", () => {
     // Respond.io event listeners
     $respond.on("chat:opened", () => {
       console.log("Chat opened");
+      clearInterval(openInterval);
+      openInterval = null;
     });
 
     $respond.on("chat:closed", () => {
       console.log("Chat closed");
       chatIframe.style.display = "none";
+      clearInterval(openInterval);
+      openInterval = null;
     });
   });
+
 });
 
 
