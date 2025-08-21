@@ -1,4 +1,4 @@
-// Update at 21 Aug 2:13 PM 
+// Update at 21 Aug 2:22 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -783,6 +783,19 @@ window.addEventListener("load", () => {
       openInterval = null;
     });
   });
+
+   // 🔹 URL change listener: reload if "contact-us" detected
+   let lastUrl = location.href;
+   new MutationObserver(() => {
+     const currentUrl = location.href;
+     if (currentUrl !== lastUrl) {
+       lastUrl = currentUrl;
+       if (currentUrl.includes("contact-us")) {
+         console.log("URL includes contact-us → Reloading page...");
+         location.reload();
+       }
+     }
+   }).observe(document, { subtree: true, childList: true });
 
 });
 
