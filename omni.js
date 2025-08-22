@@ -1,4 +1,4 @@
-// Update at 19 Aug 6:00 PM 
+// Update at 22 Aug 12:00 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -711,16 +711,16 @@ window.addEventListener("load", () => {
     }, checkInterval);
   };
 
-  // Wait for chat iframe
+  // 🔹 Wait for chat iframe
   waitForElement('iframe[src*="respond.io/webchat/widget/chat.html"]', (chatIframe) => {
     console.log("chatIframe ready");
     chatIframe.style.display = "none";
 
     let openInterval = null;
 
-    // Contact button handler
-    const contactBtn = document.querySelector('.base-main-button.contact-us-btn.d-flex');
-    if (contactBtn) {
+    // 🔹 Contact button handler (only exists on /contact-us page)
+    waitForElement('.base-main-button.contact-us-btn.d-flex', (contactBtn) => {
+      console.log("contactBtn ready");
       contactBtn.addEventListener("click", () => {
         console.log("contactBtn clicked");
         if ($respond.is("chat:open")) {
@@ -732,7 +732,6 @@ window.addEventListener("load", () => {
           chatIframe.style.display = "block";
           chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
 
-          // Retry every 100ms until chat:opened
           if (!openInterval) {
             openInterval = setInterval(() => {
               console.log("Retrying chat open…");
@@ -741,11 +740,11 @@ window.addEventListener("load", () => {
           }
         }
       });
-    }
+    });
 
-    // Chatbot button handler
-    const chatBtn = document.getElementById("chatbot");
-    if (chatBtn) {
+    // 🔹 Chatbot button handler (global)
+    waitForElement('#chatbot', (chatBtn) => {
+      console.log("chatBtn ready");
       chatBtn.addEventListener("click", () => {
         console.log("chatBtn clicked");
         if ($respond.is("chat:open")) {
@@ -758,7 +757,6 @@ window.addEventListener("load", () => {
           chatIframe.style.display = "block";
           chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
 
-          // Retry every 100ms until chat:opened
           if (!openInterval) {
             openInterval = setInterval(() => {
               console.log("Retrying chat open…");
@@ -767,9 +765,9 @@ window.addEventListener("load", () => {
           }
         }
       });
-    }
+    });
 
-    // Respond.io event listeners
+    // 🔹 Respond.io event listeners
     $respond.on("chat:opened", () => {
       console.log("Chat opened");
       clearInterval(openInterval);
@@ -784,20 +782,24 @@ window.addEventListener("load", () => {
     });
   });
 
-  // 🔹 URL change listener: reload if "contact-us" detected
-   let lastUrl = location.href;
-   new MutationObserver(() => {
-     const currentUrl = location.href;
-     if (currentUrl !== lastUrl) {
-       lastUrl = currentUrl;
-       if (currentUrl.includes("contact-us")) {
-         console.log("URL includes contact-us → Reloading page...");
-         window.location.reload(true);
-       }
-     }
-   }).observe(document, { subtree: true, childList: true });
+  // 🔹 URL change listener: re-init instead of reload
+  let lastUrl = location.href;
+  new MutationObserver(() => {
+    const currentUrl = location.href;
+    if (currentUrl !== lastUrl) {
+      lastUrl = currentUrl;
+      if (currentUrl.includes("contact-us")) {
+        console.log("URL includes contact-us → Re-initializing...");
+        // just re-run waitForElement for button again
+        waitForElement('.base-main-button.contact-us-btn.d-flex', (contactBtn) => {
+          console.log("contactBtn re-initialized after navigation");
+        });
+      }
+    }
+  }).observe(document, { subtree: true, childList: true });
 
 });
+
 
 
 
