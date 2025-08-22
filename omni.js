@@ -1,4 +1,4 @@
-// Update at 22 Aug 12:52 PM 
+// Update at 19 Aug 6:00 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -693,8 +693,9 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-window.addEventListener("load", () => {
-  console.log("Page fully loaded");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM fully loaded");
+
 
    // 🔹 Declare shared iframe reference here
    let chatIframe = null;
