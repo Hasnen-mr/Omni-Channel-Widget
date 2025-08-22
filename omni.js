@@ -1,4 +1,4 @@
-// Update at 22 Aug 12:00 PM 
+// Update at 22 Aug 12:30 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -793,6 +793,26 @@ window.addEventListener("load", () => {
         // just re-run waitForElement for button again
         waitForElement('.base-main-button.contact-us-btn.d-flex', (contactBtn) => {
           console.log("contactBtn re-initialized after navigation");
+          console.log("contactBtn ready");
+          contactBtn.addEventListener("click", () => {
+            console.log("contactBtn clicked");
+            if ($respond.is("chat:open")) {
+              $respond.do("chat:close");
+              clearInterval(openInterval);
+              openInterval = null;
+            } else {
+              $respond.do("chat:open");
+              chatIframe.style.display = "block";
+              chatIframe.scrollIntoView({ behavior: "smooth", block: "center" });
+    
+              if (!openInterval) {
+                openInterval = setInterval(() => {
+                  console.log("Retrying chat open…");
+                  $respond.do("chat:open");
+                }, 100);
+              }
+            }
+          });
         });
       }
     }
