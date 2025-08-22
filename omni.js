@@ -1,4 +1,4 @@
-// Update at 22 Aug 12:30 PM 
+// Update at 22 Aug 12:52 PM 
 // Modern Floating Widget with Advanced Animations and Contemporary Design
 // Note: Add your SVG definitions here (whatsappSVG, InstagramSVG, etc.)
 
@@ -696,6 +696,10 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener("load", () => {
   console.log("Page fully loaded");
 
+   // 🔹 Declare shared iframe reference here
+   let chatIframe = null;
+   let openInterval = null;
+
   // Helper: safely query element
   const waitForElement = (selector, callback, checkInterval = 500, maxTries = 20) => {
     let tries = 0;
@@ -712,11 +716,12 @@ window.addEventListener("load", () => {
   };
 
   // 🔹 Wait for chat iframe
-  waitForElement('iframe[src*="respond.io/webchat/widget/chat.html"]', (chatIframe) => {
+  waitForElement('iframe[src*="respond.io/webchat/widget/chat.html"]', (iframe) => {
     console.log("chatIframe ready");
+    chatIframe = iframe; // ✅ assign global reference
     chatIframe.style.display = "none";
+    
 
-    let openInterval = null;
 
     // 🔹 Contact button handler (only exists on /contact-us page)
     waitForElement('.base-main-button.contact-us-btn.d-flex', (contactBtn) => {
